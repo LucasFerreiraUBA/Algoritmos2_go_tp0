@@ -55,12 +55,10 @@ func Seleccion(vector []int) {
 	if len(vector) <= 1 {
 		return
 	}
-	inicio, fin := 0, len(vector)
-	for i := inicio; i < fin; i++ {
-		for j := i + 1; j < fin; j++ {
-			if vector[j] < vector[i] {
-				Swap(&vector[i], &vector[j])
-			}
+	for i := len(vector) - 1; i > 0; i-- {
+		indMayor := Maximo(vector[:i+1])
+		if vector[i] < vector[indMayor] {
+			Swap(&vector[i], &vector[indMayor])
 		}
 	}
 }
