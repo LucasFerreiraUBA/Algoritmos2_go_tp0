@@ -8,7 +8,16 @@ func Swap(x *int, y *int) {
 // Maximo devuelve la posición del mayor elemento del arreglo, o -1 si el el arreglo es de largo 0. Si el máximo
 // elemento aparece más de una vez, se debe devolver la primera posición en que ocurre.
 func Maximo(vector []int) int {
-	return -1
+	if len(vector) == 0 {
+		return -1
+	}
+	var indiceMayor int
+	for indice := indiceMayor; indice < len(vector); indice++ {
+		if vector[indice] > vector[indiceMayor] {
+			indiceMayor = indice
+		}
+	}
+	return indiceMayor
 }
 
 // Comparar compara dos arreglos de longitud especificada.
