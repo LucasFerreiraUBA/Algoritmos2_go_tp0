@@ -25,12 +25,44 @@ func Maximo(vector []int) int {
 // Un arreglo es menor a otro cuando al compararlos elemento a elemento, el primer elemento en el que difieren
 // no existe o es menor.
 func Comparar(vector1 []int, vector2 []int) int {
+	long1, long2 := len(vector1), len(vector2)
+	menorLongitud := ObtenerMenor(long1, long2)
+	for indice := 0; indice < menorLongitud; indice++ {
+		if vector1[indice] > vector2[indice] {
+			return 1
+		} else if vector1[indice] < vector2[indice] {
+			return -1
+		}
+	}
+	// Son iguales hasta el momento, pero puede que algún arreglo sea más largo que otro
+	if long1 > long2 {
+		return 1
+	} else if long1 < long2 {
+		return -1
+	}
 	return 0
+}
+
+func ObtenerMenor(l1, l2 int) int {
+	if l1 >= l2 {
+		return l2
+	}
+	return l1
 }
 
 // Seleccion ordena el arreglo recibido mediante el algoritmo de selección.
 func Seleccion(vector []int) {
-
+	if len(vector) <= 1 {
+		return
+	}
+	inicio, fin := 0, len(vector)
+	for i := inicio; i < fin; i++ {
+		for j := i + 1; j < fin; j++ {
+			if vector[j] < vector[i] {
+				Swap(&vector[i], &vector[j])
+			}
+		}
+	}
 }
 
 // Suma devuelve la suma de los elementos de un arreglo. En caso de no tener elementos, debe devolver 0.
