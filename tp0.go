@@ -69,11 +69,22 @@ func Seleccion(vector []int) {
 // Esta función debe implementarse de forma RECURSIVA. Se puede usar una función auxiliar (que sea
 // la recursiva).
 func Suma(vector []int) int {
-	return 0
+	if len(vector) == 0 {
+		return 0
+	}
+	return vector[0] + Suma(vector[1:])
 }
 
 // EsPalindromo devuelve si la cadena es un palíndromo. Es decir, si se lee igual al derecho que al revés.
 // Esta función debe implementarse de forma RECURSIVA.
 func EsPalindromo(cadena string) bool {
-	return false
+	return cadena == espalindromo(cadena)
+}
+
+func espalindromo(c string) string {
+	largo_c := len(c)
+	if largo_c == 0 {
+		return ""
+	}
+	return c[largo_c-1:] + espalindromo(c[:largo_c-1])
 }
