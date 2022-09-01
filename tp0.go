@@ -76,13 +76,13 @@ func Suma(vector []int) int {
 // EsPalindromo devuelve si la cadena es un palíndromo. Es decir, si se lee igual al derecho que al revés.
 // Esta función debe implementarse de forma RECURSIVA.
 func EsPalindromo(cadena string) bool {
-	return cadena == espalindromo(cadena)
+	return cadena == invertircadena(cadena)
 }
 
-func espalindromo(c string) string {
+func invertircadena(c string) string {
 	largo_c := len(c)
 	if largo_c == 0 {
 		return ""
 	}
-	return c[largo_c-1:] + espalindromo(c[:largo_c-1])
+	return c[largo_c-1:] + invertircadena(c[:largo_c-1])
 }
